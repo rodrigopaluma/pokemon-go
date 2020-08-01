@@ -1,0 +1,29 @@
+<mat-toolbar [style.padding]="'10px'" [style.position]="'fixed'" [style.top]="'0px'" fxLayout="row" fxLayoutAlign="space-between center" class="mat-elevation-z4">
+    <div>
+        <span>
+            <img src="../../../assets/images/pokemon-go.png" alt="Pokemon" title="Pokemon">
+        </span>
+    </div>
+
+    <div fxHide fxShow.gt-sm fxShow.lg fxShow.xl>
+        <button [routerLink]="['/']" mat-button class="example-icon favorite-icon" aria-label="Example icon-button with heart icon">
+            Home
+        </button>
+        <button [routerLink]="['/view']" mat-button class="example-icon" aria-label="Example icon-button with share icon">
+            Busque seu Pokemon
+        </button>
+        <button [routerLink]="['/about']" mat-button class="example-icon" aria-label="Example icon-button with share icon">
+            Sobre o Desenvolvedor
+        </button>
+    </div>
+
+    <div fxShow fxHide.md fxHide.lg fxHide.xl>
+        <button mat-button [matMenuTriggerFor]="menu">Menu</button>
+        <mat-menu #menu="matMenu">
+            <button [routerLink]="['/']" mat-menu-item>Home</button>
+            <button [routerLink]="['/view']" mat-menu-item>Busque seu Pokemon</button>
+            <button [routerLink]="['/about']" mat-menu-item>Sobre o Desenvolvedor</button>
+        </mat-menu>
+    </div>
+
+</mat-toolbar>
