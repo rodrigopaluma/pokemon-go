@@ -1,14 +1,52 @@
-<div fxLayout="column" fxLayoutAlign="center center" fxFlex="100%" [style.height]="'100vh'">
+<div fxLayout="column" fxLayoutAlign="center center" fxFlex="100%">
     <mat-toolbar fxLayout="row" fxLayoutAlign="center center" color="primary" [style.margin-top]="'80px'">Busque seu Pokemon
     </mat-toolbar>
-    <div fxLayout="column" fxLayoutAlign="center center" fxFlex="100%">
-        <mat-form-field [style.width]="'100%'" class="search">
+    <div fxLayout="column" fxLayoutAlign="center center" fxFlex="100%" [style.z-index]="'1'">
+        <mat-form-field [style.z-index]="isSmallScreen ? '0' : '-1'" [style.width]="isSmallScreen ? '80%' : '30%'" class="search">
             <mat-label>Insira o nome do Pokemon</mat-label>
-            <input matInput>
+            <input matInput [formControl]="inputSearch">
         </mat-form-field>
-        <div fxLayout="row" fxFlex="80%" fxLayoutGap="10%">
-            
-        </div>
+        <div 
+        [style.margin]="'20px 0px'" 
+        fxLayout="row-wrap" 
+        fxLayout.xs="column"
+        [style.flex-wrap]="'wrap'"
+        [style.z-index]="1"
+        [style.justify-content]="'center'"
+        [style.max-width]="'80%'" 
+        *ngIf="pokemons else loading">
+        <app-card *ngFor="let pokemon of pokemons.slice(inicio, qnt)" [pokemon]="pokemon" [routerLink]="['./'+pokemon.id]"></app-card>
+        <button mat-icon-button 
+            color="primary" 
+            *ngIf="isSmallScreen" 
+            [style.display]="'flex'"
+            [style.position]="'absolute'"
+            [style.left]="'10px'"
+            [style.z-index]="'1'"
+            (click)="inicio = inicio - 1; qnt = qnt - 1">
+            <mat-icon>keyboard_arrow_left</mat-icon>
+        </button>
+        <button mat-icon-button 
+            color="primary"
+            *ngIf="isSmallScreen"
+            [style.display]="'flex'"
+            [style.position]="'absolute'"
+            [style.right]="'-5px'"
+            [style.z-index]="'1'"
+            (click)="inicio = inicio + 1; qnt = qnt + 1">
+            <mat-icon>keyboard_arrow_right</mat-icon>
+        </button>
+    </div>
+    <button [style.margin-bottom]="'30px'" 
+        mat-raised-button color="primary" 
+        *ngIf="!isSmallScreen && pokemons" 
+        (click)="qnt = qnt + 4">Ver mais</button>
     </div>
     
 </div>
+
+<ng-template #loading>
+    <div fxLayout="row" fxFlex="100%" [style.margin-bottom]="'30px'" fxLayoutAlign="center center">
+        <mat-spinner></mat-spinner>
+    </div>
+</ng-template>
