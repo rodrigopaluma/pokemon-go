@@ -4,6 +4,8 @@ import { CardComponent } from './card.component';
 import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
 import { CdkScrollableModule } from '@angular/cdk/scrolling';
+import { FormsModule } from '@angular/forms';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
   declarations: [CardComponent],
@@ -11,7 +13,8 @@ import { CdkScrollableModule } from '@angular/cdk/scrolling';
     CommonModule,
     MatCardModule,
     MatButtonModule,
-    CdkScrollableModule
+    CdkScrollableModule,
+    RouterModule
   ],
   exports: [CardComponent]
 })

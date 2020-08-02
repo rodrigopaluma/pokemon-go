@@ -1,0 +1,11 @@
+{
+  "targets": {
+    "rp-pokemon": {
+      "hosting": {
+        "pokemon-go": [
+          "rp-pokemon"
+        ]
+      }
+    }
+  }
+}

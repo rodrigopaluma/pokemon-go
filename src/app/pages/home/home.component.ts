@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { PokemonTCG } from 'pokemon-tcg-sdk-typescript'
+import { PokemonTCG } from 'pokemon-tcg-sdk-typescript';
 import { BreakpointObserver } from '@angular/cdk/layout';
 
 @Component({
