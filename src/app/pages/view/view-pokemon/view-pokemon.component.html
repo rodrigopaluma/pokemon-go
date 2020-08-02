@@ -1,12 +1,12 @@
 <div fxLayout="column" fxLayoutAlign="center center" fxFlex="100%" *ngIf="card">
     <mat-toolbar fxLayout="row" fxLayoutAlign="center center" color="primary" [style.margin-top]="'80px'">
-        Nome do Pokemon
+        {{card.name}}
     </mat-toolbar>
     <div fxLayout="row" fxLayout.xs="column" fxLayoutAlign="center center" fxFlex="100%" fxFlexFill>
 
         <div fxLayoutAlign="center center" fxFlex="100%" fxFlexFill>
             <mat-card class="mat-elevation-z8" [style.margin-top]="'10px'" [style.cursor]="'pointer'" (click)="openImage()">
-                <img [style.max-height]="'400px'" [style.margin]="'0 auto'" src="https://images.pokemontcg.io/base5/20_hires.png" alt="Pokemon">
+                <img [style.max-height]="'400px'" [style.margin]="'0 auto'" [src]="card.imageUrlHiRes" [alt]="card.name">
             </mat-card>
         </div>
         <div fxFlex="100%" fxFlexFill>
@@ -15,22 +15,20 @@
                     <b>Nome: </b> <span [style.margin-left]="'5px'"> {{card.name}} </span>
                 </mat-list-item>
                 <mat-list-item>
-                    <b>ID Pokemon: </b> <span [style.margin-left]="'5px'"> Teste</span>
+                    <b>ID Pokemon: </b> <span [style.margin-left]="'5px'"> {{card.id}}</span>
                 </mat-list-item>
                 <mat-list-item>
-                    <b>Tipos: </b> <span [style.margin-left]="'5px'"> Teste</span>
+                    <b>Tipos: </b> <span *ngFor="let type of card.types" [style.margin-left]="'5px'"> {{type}}</span> <span *ngIf="!card.types">Não Informado </span>
                 </mat-list-item>
                 <mat-list-item>
-                    <b>Resistências: </b> <span [style.margin-left]="'5px'"> Teste</span>
+                    <b>Resistências: </b> <span *ngFor="let resistance of card.resistances" [style.margin-left]="'5px'"> {{resistance.type}} {{resistance.value}}</span> <span *ngIf="!card.resistances">Não Informado </span>
                 </mat-list-item>
                 <mat-list-item>
-                    <b>Fraquezas: </b> <span [style.margin-left]="'5px'"> Teste</span>
+                    <b>Fraquezas: </b> <span *ngFor="let weaknesse of card.weaknesses" [style.margin-left]="'5px'"> {{weaknesse.type}} {{weaknesse.value}}</span> <span *ngIf="!card.weaknesses">Não Informado </span>
                 </mat-list-item>
                 <mat-list-item>
                     <b>Ataques: </b> 
-                    <button [style.margin-left]="'10px'" mat-raised-button (click)="openAtacks()">Ataque 01</button>
-                    <button [style.margin-left]="'10px'" mat-raised-button (click)="openAtacks()">Ataque 02</button>
-                    <button [style.margin-left]="'10px'" mat-raised-button (click)="openAtacks()">Ataque 03</button>
+                    <button *ngFor="let attack of card.attacks" [style.margin-left]="'10px'" mat-raised-button (click)="openAtacks()">{{attack.name}}</button> <span *ngIf="!card.attacks">Não Informado </span>
                 </mat-list-item>
               </mat-list>
         </div>

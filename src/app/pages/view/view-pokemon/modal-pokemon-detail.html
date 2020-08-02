@@ -1,21 +1,17 @@
-<h2 mat-dialog-title>Nome do Pokemon {{card.name}}</h2>
+<h2 mat-dialog-title>{{card.name}}</h2>
 <mat-dialog-content class="mat-typography">
     <mat-list role="list">
         <mat-list-item role="listitem">
-            <b>Nome do Ataque: </b> <span [style.margin-left]="'5px'"> Teste</span>
+            <b>Nome do Ataque: </b> <span [style.margin-left]="'5px'"> {{card.attacks[0].name}}</span>
         </mat-list-item>
         <mat-list-item role="listitem">
-            <b>Custo de Mana: </b> <span [style.margin-left]="'5px'"> Teste</span>
+            <b>Custo de Mana: </b> <span [style.margin-left]="'5px'"> {{card.attacks[0].convertedEnergyCost}}</span>
         </mat-list-item>
         <mat-list-item role="listitem">
-            <b>Dano: </b> <span [style.margin-left]="'5px'"> Teste</span>
+            <b>Dano: </b> <span [style.margin-left]="'5px'"> {{card.attacks[0].damage}}</span>
         </mat-list-item>
         <mat-list-item role="listitem">
-            <p [style.margin-top]="'50px'"><b>Descrição: </b> Build features quickly with simple, declarative
-                templates. Extend the template language with
-                your own components and use a wide array of existing components. Get immediate Angular-specific
-                help and feedback with nearly every IDE and editor. All this comes together so you can focus
-                on building amazing apps rather than trying to make the code work.</p>
+            <p [style.margin-top]="'10px'"><b>Descrição: </b> {{card.attacks[0].text}}</p>
         </mat-list-item>
     </mat-list>
 </mat-dialog-content>

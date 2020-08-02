@@ -1,7 +1,7 @@
-<div fxLayout="column" fxLayoutAlign="center center" fxFlex="100%">
+<div fxLayout="column" fxLayoutAlign="center center" [style.min-height]="'90vh'" fxFlex="100%">
     <mat-toolbar fxLayout="row" fxLayoutAlign="center center" color="primary" [style.margin-top]="'80px'">Busque seu Pokemon
     </mat-toolbar>
-    <div fxLayout="column" fxLayoutAlign="center center" fxFlex="100%" [style.z-index]="'1'">
+    <div fxLayout="column" fxLayoutAlign="center center" fxFlex="100%">
         <mat-form-field [style.z-index]="isSmallScreen ? '0' : '-1'" [style.width]="isSmallScreen ? '80%' : '30%'" class="search">
             <mat-label>Insira o nome do Pokemon</mat-label>
             <input matInput [formControl]="inputSearch">
@@ -11,7 +11,7 @@
         fxLayout="row-wrap" 
         fxLayout.xs="column"
         [style.flex-wrap]="'wrap'"
-        [style.z-index]="1"
+        [style.z-index]="-1"
         [style.justify-content]="'center'"
         [style.max-width]="'80%'" 
         *ngIf="pokemons else loading">
