@@ -6,6 +6,8 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
 
+import { CdkScrollableModule } from '@angular/cdk/scrolling';
+
 @NgModule({
   declarations: [
     AppComponent
@@ -14,7 +16,8 @@ import { HttpClientModule } from '@angular/common/http';
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    HttpClientModule
+    HttpClientModule,
+    CdkScrollableModule
   ],
   providers: [],
   bootstrap: [AppComponent]

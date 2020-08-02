@@ -4,20 +4,26 @@ import { HomeComponent } from './home.component';
 import { RouterModule } from '@angular/router';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { CardModule } from 'src/app/shared/card/card.module';
-import { CarouselComponent, CarouselItemElement } from 'src/app/shared/carousel/carousel.component';
-import { CarouselItemDirective } from 'src/app/directives/carousel-item.directive';
+import { LayoutModule } from '@angular/cdk/layout';
+import { MatButtonModule } from '@angular/material/button';
+import { MatIconModule } from '@angular/material/icon';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
 const ROUTE = [
   { path: '', component: HomeComponent }
 ];
 
 @NgModule({
-  declarations: [HomeComponent, CarouselComponent, CarouselItemDirective, CarouselItemElement],
+  declarations: [HomeComponent],
   imports: [
     CommonModule,
     RouterModule.forChild(ROUTE),
     FlexLayoutModule,
-    CardModule
+    CardModule,
+    LayoutModule,
+    MatButtonModule,
+    MatIconModule,
+    MatProgressSpinnerModule
   ],
   exports: [
     HomeComponent

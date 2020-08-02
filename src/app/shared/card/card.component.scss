@@ -1,0 +1,13 @@
+.example-card {
+    max-width: 240px;
+    min-height: 430px;
+    height: 450px;
+    margin-bottom: 20px;
+    margin-left: 20px;
+    .truncate {
+        width: 150px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+}

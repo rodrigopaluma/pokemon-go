@@ -1,1 +1,14 @@
-<img src="https://images.pokemontcg.io/base5/20.png" alt="Pokemon">
+<mat-card class="example-card">
+  <mat-card-header>
+    <mat-card-title class="truncate">{{pokemon.name}}</mat-card-title>
+    <mat-card-subtitle>{{pokemon.id | uppercase}}</mat-card-subtitle>
+  </mat-card-header>
+  <img [style.max-height]="'330px'" [style.max-width]="'240px'" mat-card-image [src]="pokemon.imageUrl" [alt]="pokemon.name">
+  <mat-card-content>
+    <p>
+      <b>Tipo: </b>
+      <span *ngIf="!pokemon.types">Não Informado </span>
+      <span *ngFor="let type of pokemon.types">{{ type }} </span>
+    </p>
+  </mat-card-content>
+</mat-card>

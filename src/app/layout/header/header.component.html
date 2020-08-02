@@ -1,4 +1,10 @@
-<mat-toolbar [style.padding]="'10px'" [style.position]="'fixed'" [style.top]="'0px'" fxLayout="row" fxLayoutAlign="space-between center" class="mat-elevation-z4">
+<mat-toolbar 
+    [style.padding]="'10px'"
+    [style.position]="isSmallScreen ? 'absolute':'fixed'"
+    [style.top]="'0px'"
+    fxLayout="row"
+    fxLayoutAlign="space-between center"
+    class="mat-elevation-z4">
     <div>
         <span>
             <img src="../../../assets/images/pokemon-go.png" alt="Pokemon" title="Pokemon">
