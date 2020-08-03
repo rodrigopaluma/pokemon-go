@@ -16,10 +16,6 @@ const LAYOUT_ROUTES: Routes = [
         loadChildren: () => import('../pages/view/view.module').then(m => m.ViewModule)
       },
       {
-        path: 'error',
-        loadChildren: () => import('../pages/error/error.module').then(m => m.ErrorModule)
-      },
-      {
         path: 'about',
         loadChildren: () => import('../pages/about/about.module').then(m => m.AboutModule)
       }
