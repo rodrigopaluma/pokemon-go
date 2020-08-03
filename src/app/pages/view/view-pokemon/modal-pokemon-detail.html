@@ -14,7 +14,7 @@
             
             <!--<p [style.margin-top]="'10px'"><b>Descrição: </b> {{attack.text}}</p> <span [style.margin-left]="'5px'" *ngIf="!attack.text">Não Informado </span>-->
         </mat-list-item>
-        <span [style.margin-top]="'15px'"><b>Descrição: </b> {{attack.text}}</span>
+        <span [style.margin-top]="'15px'" *ngIf="attack.text"><b>Descrição: </b> {{attack.text}}</span>
         <span [style.margin-top]="'15px'" *ngIf="!attack.text"><b>Descrição: </b> Não Informado </span>
     </mat-list>
 </mat-dialog-content>
