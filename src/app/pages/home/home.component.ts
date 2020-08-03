@@ -9,7 +9,7 @@ import { BreakpointObserver } from '@angular/cdk/layout';
 })
 export class HomeComponent implements OnInit {
 
-  pokemons: any;
+  pokemons: PokemonTCG.Card[];
   inicio = 0;
   qnt = 1;
   isSmallScreen;
@@ -30,12 +30,11 @@ export class HomeComponent implements OnInit {
             return -1;
           }
           return 0;
-        })
+        });
         this.pokemons = cards;
-        // console.log(this.pokemons);
       })
       .catch(error => {
-        // do something with the error
+        console.log(error);
       });
   }
 

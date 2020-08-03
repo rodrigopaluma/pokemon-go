@@ -8,7 +8,7 @@ import { BreakpointObserver } from '@angular/cdk/layout';
 })
 export class HeaderComponent implements OnInit {
 
-  isSmallScreen;
+  isSmallScreen: boolean;
 
   constructor(breakpointObserver: BreakpointObserver) {
     this.isSmallScreen = breakpointObserver.isMatched('(max-width: 599px)');

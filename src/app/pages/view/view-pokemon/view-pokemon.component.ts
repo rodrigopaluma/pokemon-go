@@ -3,7 +3,6 @@ import { PokemonTCG } from 'pokemon-tcg-sdk-typescript';
 import { BreakpointObserver } from '@angular/cdk/layout';
 import { ActivatedRoute } from '@angular/router';
 import { MatDialog, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { Card } from 'pokemon-tcg-sdk-typescript/dist/sdk';
 
 @Component({
   selector: 'app-view-pokemon',
@@ -12,8 +11,8 @@ import { Card } from 'pokemon-tcg-sdk-typescript/dist/sdk';
 })
 export class ViewPokemonComponent implements OnInit {
 
-  isSmallScreen;
-  card;
+  isSmallScreen: boolean;
+  card: PokemonTCG.Card;
 
   constructor(breakpointObserver: BreakpointObserver,
               private activatedRoute: ActivatedRoute,
@@ -43,10 +42,6 @@ export class ViewPokemonComponent implements OnInit {
         attack
       }
     });
-
-    dialogRef.afterClosed().subscribe(result => {
-      console.log(`Dialog result: ${result}`);
-    });
   }
 
   openImage() {
@@ -54,10 +49,6 @@ export class ViewPokemonComponent implements OnInit {
       data: {
         pokemon: this.card
       }
-    });
-
-    dialogRef.afterClosed().subscribe(result => {
-      console.log(`Dialog result: ${result}`);
     });
   }
 
@@ -70,8 +61,8 @@ export class ViewPokemonComponent implements OnInit {
 })
 // tslint:disable-next-line: component-class-suffix
 export class ModalPokemonDetail {
-  card;
-  attack;
+  card: PokemonTCG.Card;
+  attack: PokemonTCG.IAttack;
   constructor(@Inject(MAT_DIALOG_DATA) public data: any) {
     this.card = data.pokemon;
     this.attack = data.attack;
@@ -86,7 +77,7 @@ export class ModalPokemonDetail {
 // tslint:disable-next-line: component-class-suffix
 
 export class ModalPokemonImage {
-  card;
+  card: PokemonTCG.Card;
   constructor(@Inject(MAT_DIALOG_DATA) public data: any) {
     this.card = data.pokemon;
   }

@@ -11,8 +11,11 @@
             <b>Dano: </b> <span [style.margin-left]="'5px'"> {{attack.damage}}</span> <span [style.margin-left]="'5px'" *ngIf="!attack.damage">Não Informado </span>
         </mat-list-item>
         <mat-list-item role="listitem">
-            <p [style.margin-top]="'10px'"><b>Descrição: </b> {{attack.text}}</p> <span [style.margin-left]="'5px'" *ngIf="!attack.text">Não Informado </span>
+            
+            <!--<p [style.margin-top]="'10px'"><b>Descrição: </b> {{attack.text}}</p> <span [style.margin-left]="'5px'" *ngIf="!attack.text">Não Informado </span>-->
         </mat-list-item>
+        <span [style.margin-top]="'15px'"><b>Descrição: </b> {{attack.text}}</span>
+        <span [style.margin-top]="'15px'" *ngIf="!attack.text"><b>Descrição: </b> Não Informado </span>
     </mat-list>
 </mat-dialog-content>
 <mat-dialog-actions [style.float]="'right'">

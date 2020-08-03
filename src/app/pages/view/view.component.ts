@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { PokemonTCG } from 'pokemon-tcg-sdk-typescript';
 import { BreakpointObserver } from '@angular/cdk/layout';
-import { ActivatedRoute } from '@angular/router';
-import { FormControl, FormBuilder } from '@angular/forms';
+import { FormControl } from '@angular/forms';
 
 @Component({
   selector: 'app-view',
@@ -11,16 +10,14 @@ import { FormControl, FormBuilder } from '@angular/forms';
 })
 export class ViewComponent implements OnInit {
 
-  pokemons: any;
-  original: any;
+  pokemons: PokemonTCG.Card[];
+  original: PokemonTCG.Card[];
   inicio = 0;
   qnt = 1;
-  isSmallScreen;
+  isSmallScreen: boolean;
   inputSearch: FormControl = new FormControl('');
 
-  constructor(breakpointObserver: BreakpointObserver,
-              private activatedRoute: ActivatedRoute,
-              private formBuilder: FormBuilder) {
+  constructor(breakpointObserver: BreakpointObserver) {
     this.isSmallScreen = breakpointObserver.isMatched('(max-width: 599px)');
   }
 
@@ -43,13 +40,12 @@ export class ViewComponent implements OnInit {
             return -1;
           }
           return 0;
-        })
+        });
         this.pokemons = cards;
         this.original = cards;
-        // console.log(this.pokemons);
       })
       .catch(error => {
-        // do something with the error
+        console.log(error);
       });
   }
 
