@@ -2,16 +2,16 @@
 <mat-dialog-content class="mat-typography">
     <mat-list role="list">
         <mat-list-item role="listitem">
-            <b>Ataque: </b> <span [style.margin-left]="'5px'"> {{card.attacks[0].name}}</span>
+            <b>Ataque: </b> <span [style.margin-left]="'5px'"> {{attack.name}}</span>
         </mat-list-item>
         <mat-list-item role="listitem">
-            <b>Mana: </b> <span [style.margin-left]="'5px'"> {{card.attacks[0].convertedEnergyCost}}</span> <span [style.margin-left]="'5px'" *ngIf="!card.attacks">Não Informado </span>
+            <b>Mana: </b> <span [style.margin-left]="'5px'"> {{attack.convertedEnergyCost}}</span> <span [style.margin-left]="'5px'" *ngIf="!attack.convertedEnergyCost">Não Informado </span>
         </mat-list-item>
         <mat-list-item role="listitem">
-            <b>Dano: </b> <span [style.margin-left]="'5px'"> {{card.attacks[0].damage}}</span> <span [style.margin-left]="'5px'" *ngIf="!card.attacks">Não Informado </span>
+            <b>Dano: </b> <span [style.margin-left]="'5px'"> {{attack.damage}}</span> <span [style.margin-left]="'5px'" *ngIf="!attack.damage">Não Informado </span>
         </mat-list-item>
         <mat-list-item role="listitem">
-            <p [style.margin-top]="'10px'"><b>Descrição: </b> {{card.attacks[0].text}}</p> <span [style.margin-left]="'5px'" *ngIf="!card.attacks">Não Informado </span>
+            <p [style.margin-top]="'10px'"><b>Descrição: </b> {{attack.text}}</p> <span [style.margin-left]="'5px'" *ngIf="!attack.text">Não Informado </span>
         </mat-list-item>
     </mat-list>
 </mat-dialog-content>

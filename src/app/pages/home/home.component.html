@@ -28,6 +28,7 @@
             [style.position]="'absolute'"
             [style.left]="'5px'"
             [style.z-index]="'1'"
+            [disabled]="inicio == 0"
             (click)="inicio = inicio - 1; qnt = qnt - 1">
             <mat-icon>keyboard_arrow_left</mat-icon>
         </button>
@@ -38,6 +39,7 @@
             [style.position]="'absolute'"
             [style.right]="'-5px'"
             [style.z-index]="'1'"
+            [disabled]="inicio == pokemons.length-1"
             (click)="inicio = inicio + 1; qnt = qnt + 1">
             <mat-icon>keyboard_arrow_right</mat-icon>
         </button>

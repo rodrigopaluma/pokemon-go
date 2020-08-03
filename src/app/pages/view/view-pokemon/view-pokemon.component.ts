@@ -36,10 +36,11 @@ export class ViewPokemonComponent implements OnInit {
   }
 
 
-  openAtacks() {
+  openAtacks(attack) {
     const dialogRef = this.dialog.open(ModalPokemonDetail, {
       data: {
-        pokemon: this.card
+        pokemon: this.card,
+        attack
       }
     });
 
@@ -70,8 +71,10 @@ export class ViewPokemonComponent implements OnInit {
 // tslint:disable-next-line: component-class-suffix
 export class ModalPokemonDetail {
   card;
+  attack;
   constructor(@Inject(MAT_DIALOG_DATA) public data: any) {
     this.card = data.pokemon;
+    this.attack = data.attack;
   }
 }
 

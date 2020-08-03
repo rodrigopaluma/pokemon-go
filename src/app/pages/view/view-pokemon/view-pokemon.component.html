@@ -28,7 +28,7 @@
                 </mat-list-item>
                 <mat-list-item>
                     <b>Ataques: </b> 
-                    <button *ngFor="let attack of card.attacks" [style.margin-left]="'10px'" mat-raised-button (click)="openAtacks()">{{attack.name}}</button> <span [style.margin-left]="'5px'" *ngIf="!card.attacks">Não Informado </span>
+                    <button *ngFor="let attack of card.attacks" [style.margin-left]="'10px'" mat-raised-button (click)="openAtacks(attack)">{{attack.name}}</button> <span [style.margin-left]="'5px'" *ngIf="!card.attacks">Não Informado </span>
                 </mat-list-item>
               </mat-list>
         </div>
