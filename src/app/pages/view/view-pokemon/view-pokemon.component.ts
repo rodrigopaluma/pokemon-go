@@ -28,7 +28,7 @@ export class ViewPokemonComponent implements OnInit {
         PokemonTCG.Card.find(params.id)
         .then(card => {
           this.card = card;
-          console.log(card)
+          // console.log(card);
         })
         .catch(error => console.log(error));
       }

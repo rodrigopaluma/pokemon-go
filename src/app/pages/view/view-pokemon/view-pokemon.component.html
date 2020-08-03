@@ -1,4 +1,4 @@
-<div fxLayout="column" fxLayoutAlign="center center" fxFlex="100%" *ngIf="card">
+<div fxLayout="column" fxLayoutAlign="center center" fxFlex="100%" *ngIf="card" [style.min-height]="'90vh'">
     <mat-toolbar fxLayout="row" fxLayoutAlign="center center" color="primary" [style.margin-top]="'80px'">
         {{card.name}}
     </mat-toolbar>
@@ -18,17 +18,17 @@
                     <b>ID Pokemon: </b> <span [style.margin-left]="'5px'"> {{card.id}}</span>
                 </mat-list-item>
                 <mat-list-item>
-                    <b>Tipos: </b> <span *ngFor="let type of card.types" [style.margin-left]="'5px'"> {{type}}</span> <span *ngIf="!card.types">Não Informado </span>
+                    <b>Tipos: </b> <span *ngFor="let type of card.types" [style.margin-left]="'5px'"> {{type}}</span> <span [style.margin-left]="'5px'" *ngIf="!card.types">Não Informado </span>
                 </mat-list-item>
                 <mat-list-item>
-                    <b>Resistências: </b> <span *ngFor="let resistance of card.resistances" [style.margin-left]="'5px'"> {{resistance.type}} {{resistance.value}}</span> <span *ngIf="!card.resistances">Não Informado </span>
+                    <b>Resistências: </b> <span *ngFor="let resistance of card.resistances" [style.margin-left]="'5px'"> {{resistance.type}} {{resistance.value}}</span> <span [style.margin-left]="'5px'" *ngIf="!card.resistances">Não Informado </span>
                 </mat-list-item>
                 <mat-list-item>
-                    <b>Fraquezas: </b> <span *ngFor="let weaknesse of card.weaknesses" [style.margin-left]="'5px'"> {{weaknesse.type}} {{weaknesse.value}}</span> <span *ngIf="!card.weaknesses">Não Informado </span>
+                    <b>Fraquezas: </b> <span *ngFor="let weaknesse of card.weaknesses" [style.margin-left]="'5px'"> {{weaknesse.type}} {{weaknesse.value}}</span> <span [style.margin-left]="'5px'" *ngIf="!card.weaknesses">Não Informado </span>
                 </mat-list-item>
                 <mat-list-item>
                     <b>Ataques: </b> 
-                    <button *ngFor="let attack of card.attacks" [style.margin-left]="'10px'" mat-raised-button (click)="openAtacks()">{{attack.name}}</button> <span *ngIf="!card.attacks">Não Informado </span>
+                    <button *ngFor="let attack of card.attacks" [style.margin-left]="'10px'" mat-raised-button (click)="openAtacks()">{{attack.name}}</button> <span [style.margin-left]="'5px'" *ngIf="!card.attacks">Não Informado </span>
                 </mat-list-item>
               </mat-list>
         </div>

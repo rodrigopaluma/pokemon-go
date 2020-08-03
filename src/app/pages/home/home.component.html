@@ -1,4 +1,4 @@
-<div fxLayout="column" fxLayoutAlign="center center" fxFlex="100%">
+<div fxLayout="column" fxLayoutAlign="center center" fxFlex="100%" [style.min-height]="'90vh'">
     <div fxLayout="row" fxLayoutAlign="center center" fxFlex="100%">
         <img [style.width]="'100%'" [style.margin-top]="isSmallScreen ? '80px':'0px'" src="../../../assets/images/gobattleleague-season1.jpg"
             alt="Pokemon - Go">
@@ -16,17 +16,17 @@
         fxLayout="row-wrap" 
         fxLayout.xs="column"
         [style.flex-wrap]="'wrap'"
-        [style.z-index]="isSmallScreen ? '0' : '-1'"
+        [style.z-index]="isSmallScreen ? '0' : '0'"
         [style.justify-content]="'center'"
         [style.max-width]="'80%'" 
         *ngIf="pokemons else loading">
-        <app-card *ngFor="let pokemon of pokemons.slice(inicio, qnt)" [pokemon]="pokemon"></app-card>
+        <app-card *ngFor="let pokemon of pokemons.slice(inicio, qnt)" [pokemon]="pokemon" [routerLink]="['./view/'+pokemon.id]"></app-card>
         <button mat-icon-button 
             color="primary" 
             *ngIf="isSmallScreen" 
             [style.display]="'flex'"
             [style.position]="'absolute'"
-            [style.left]="'10px'"
+            [style.left]="'5px'"
             [style.z-index]="'1'"
             (click)="inicio = inicio - 1; qnt = qnt - 1">
             <mat-icon>keyboard_arrow_left</mat-icon>
