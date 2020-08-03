@@ -1,6 +1,9 @@
 <div fxLayout="column" fxLayoutAlign="center center" fxFlex="100%" *ngIf="card" [style.min-height]="'90vh'">
-    <mat-toolbar fxLayout="row" fxLayoutAlign="center center" color="primary" [style.margin-top]="'80px'">
-        {{card.name}}
+    <mat-toolbar fxLayout="column" fxLayoutAlign="center center" color="primary" [style.margin-top]="'80px'">
+        <button [routerLink]="['/view']" color="accent" mat-icon-button aria-label="Voltar">
+            <mat-icon>keyboard_backspace</mat-icon>
+        </button>
+        <h1 [style.font-size]="'30px'">{{card.name}}</h1>
     </mat-toolbar>
     <div fxLayout="row" fxLayout.xs="column" fxLayoutAlign="center center" fxFlex="100%" fxFlexFill>
 
