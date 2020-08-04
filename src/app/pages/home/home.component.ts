@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { PokemonTCG } from 'pokemon-tcg-sdk-typescript';
 import { BreakpointObserver } from '@angular/cdk/layout';
+import { PokemonService } from 'src/app/services/pokemon.service';
+import { Pokemons } from 'src/app/models/pokemon.model';
 
 @Component({
   selector: 'app-home',
@@ -9,19 +10,20 @@ import { BreakpointObserver } from '@angular/cdk/layout';
 })
 export class HomeComponent implements OnInit {
 
-  pokemons: PokemonTCG.Card[];
+  pokemons: Pokemons[];
   inicio = 0;
   qnt = 1;
   isSmallScreen;
 
-  constructor(breakpointObserver: BreakpointObserver) {
+  constructor(breakpointObserver: BreakpointObserver,
+              private pokemonsService: PokemonService) {
     this.isSmallScreen = breakpointObserver.isMatched('(max-width: 599px)');
   }
 
   ngOnInit(): void {
     this.qnt = this.isSmallScreen ? 1 : 8;
-    PokemonTCG.Card.all()
-      .then(cards => {
+    this.pokemonsService.getPokemons().subscribe(values => {
+        const cards: Pokemons[] = values.cards;
         cards.sort((a, b) => {
           if (a.name > b.name) {
             return 1;
@@ -32,9 +34,6 @@ export class HomeComponent implements OnInit {
           return 0;
         });
         this.pokemons = cards;
-      })
-      .catch(error => {
-        console.log(error);
       });
   }
 

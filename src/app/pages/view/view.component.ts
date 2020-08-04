@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { PokemonTCG } from 'pokemon-tcg-sdk-typescript';
+import { PokemonService } from 'src/app/services/pokemon.service';
+import { Pokemons } from 'src/app/models/pokemon.model';
 import { BreakpointObserver } from '@angular/cdk/layout';
 import { FormControl } from '@angular/forms';
 
@@ -10,14 +11,15 @@ import { FormControl } from '@angular/forms';
 })
 export class ViewComponent implements OnInit {
 
-  pokemons: PokemonTCG.Card[];
-  original: PokemonTCG.Card[];
+  pokemons: Pokemons[];
+  original: Pokemons[];
   inicio = 0;
   qnt = 1;
   isSmallScreen: boolean;
   inputSearch: FormControl = new FormControl('');
 
-  constructor(breakpointObserver: BreakpointObserver) {
+  constructor(breakpointObserver: BreakpointObserver,
+              private pokemonsService: PokemonService) {
     this.isSmallScreen = breakpointObserver.isMatched('(max-width: 599px)');
   }
 
@@ -30,23 +32,21 @@ export class ViewComponent implements OnInit {
       });
     });
     this.qnt = this.isSmallScreen ? 1 : 16;
-    PokemonTCG.Card.all()
-      .then(cards => {
-        cards.sort((a, b) => {
-          if (a.name > b.name) {
-            return 1;
-          }
-          if (a.name < b.name) {
-            return -1;
-          }
-          return 0;
-        });
-        this.pokemons = cards;
-        this.original = cards;
-      })
-      .catch(error => {
-        console.log(error);
+    this.pokemonsService.getPokemons().subscribe(values => {
+      const cards: Pokemons[] = values.cards;
+      cards.sort((a, b) => {
+        if (a.name > b.name) {
+          return 1;
+        }
+        if (a.name < b.name) {
+          return -1;
+        }
+        return 0;
       });
+      this.pokemons = cards;
+      this.original = cards;
+    });
+
   }
 
 }

@@ -1,8 +1,9 @@
 import { Component, OnInit, Inject } from '@angular/core';
-import { PokemonTCG } from 'pokemon-tcg-sdk-typescript';
 import { BreakpointObserver } from '@angular/cdk/layout';
 import { ActivatedRoute } from '@angular/router';
 import { MatDialog, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { PokemonService } from 'src/app/services/pokemon.service';
+import { Pokemons, IAttack } from 'src/app/models/pokemon.model';
 
 @Component({
   selector: 'app-view-pokemon',
@@ -12,24 +13,21 @@ import { MatDialog, MAT_DIALOG_DATA } from '@angular/material/dialog';
 export class ViewPokemonComponent implements OnInit {
 
   isSmallScreen: boolean;
-  card: PokemonTCG.Card;
+  card: any;
 
   constructor(breakpointObserver: BreakpointObserver,
               private activatedRoute: ActivatedRoute,
-              public dialog: MatDialog) {
+              public dialog: MatDialog,
+              private pokemonsService: PokemonService) {
     this.isSmallScreen = breakpointObserver.isMatched('(max-width: 599px)');
   }
 
   ngOnInit(): void {
     this.activatedRoute.params.subscribe(params => {
       if (params.id) {
-        console.log(params.id)
-        PokemonTCG.Card.find(params.id)
-        .then(card => {
-          this.card = card;
-          // console.log(card);
-        })
-        .catch(error => console.log(error));
+        this.pokemonsService.getPokemon(params.id).subscribe(value => {
+          this.card = value.card;
+        });
       }
     });
   }
@@ -61,8 +59,8 @@ export class ViewPokemonComponent implements OnInit {
 })
 // tslint:disable-next-line: component-class-suffix
 export class ModalPokemonDetail {
-  card: PokemonTCG.Card;
-  attack: PokemonTCG.IAttack;
+  card: Pokemons;
+  attack: IAttack;
   constructor(@Inject(MAT_DIALOG_DATA) public data: any) {
     this.card = data.pokemon;
     this.attack = data.attack;
@@ -77,7 +75,7 @@ export class ModalPokemonDetail {
 // tslint:disable-next-line: component-class-suffix
 
 export class ModalPokemonImage {
-  card: PokemonTCG.Card;
+  card: Pokemons;
   constructor(@Inject(MAT_DIALOG_DATA) public data: any) {
     this.card = data.pokemon;
   }
